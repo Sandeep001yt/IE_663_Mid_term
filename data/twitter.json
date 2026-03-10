@@ -1,0 +1,47 @@
+{
+    "dataset": {
+    "dataset_name": "Twitter15",
+    "data_root": "/home/ie643_spartans/Code_Vinayak/temp_tombert/absa_data/twitter2015",
+    "image_dir": "/home/ie643_spartans/Code_Vinayak/twitter2015_images",
+    "bert_path": "bert-base-uncased",
+    "max_len": 128
+},
+    "visual": {
+        "name": "resnet50"
+    },
+    "text": {
+        "name": "bert-base-uncased"
+    },
+    "loss": {
+        "type": "CrossEntropy"
+    },
+    "train": {
+        "epoch_dict": 50,
+        "batch_size": 32,
+        "num_workers": 4,
+        "bert_lr": 2e-5,
+        "head_lr": 1e-3,
+        "optimizer": {
+            "type": "AdamW",
+            "wc": 1e-4
+        },
+        "lr_scheduler": {
+            "type": "warmup",
+            "patience": 20
+        }
+    },
+    "test": {
+        "batch_size": 32,
+        "num_workers": 4
+    },
+    "setting": {
+        "type": "Twitter15 Sentiment Classification",
+        "num_class": 3
+    },
+    "seed": 42,
+    "gpu_id": "0",
+    "image_res": 224,
+    "fps": 1,
+    "debug": false,
+    "print_inteval": 20
+}
