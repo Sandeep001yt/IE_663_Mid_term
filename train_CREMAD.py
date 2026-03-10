@@ -273,6 +273,7 @@ if __name__ == '__main__':
                 model.state_dict(),
                 f"{model_folder_path}/crema_GB_best_model_{best_acc:.4f}.pth"
             )
+        # For dynamic (ACA)
         if ((epoch+1) % check == 0 or epoch == 0):
             print(('ratio: {ratio_a:.3f}').format(ratio_a=ratio_a))
             if ratio_a > args.lam+0.01:
@@ -281,3 +282,8 @@ if __name__ == '__main__':
             elif ratio_a < args.lam-0.01:
                 print("add_layer_a")
                 model.add_layer(is_a=True)
+
+        # # For Fixed number of classifiers
+        # Num_classifiers = 12
+        # for i in range(Num_classifiers):
+        #     model.add_layer(is_a = False)
